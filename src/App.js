@@ -1,10 +1,8 @@
-import { Component } from 'react';
+import React,  { Component } from 'react';
 import { BrowserRouter, Switch, NavLink, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Auth from './Auth.js';
 import ToDos from './ToDos.js';
-
-
 
 class Home extends Component {
   render() { 
@@ -12,16 +10,15 @@ class Home extends Component {
   }
 }
  
-class App extends Component() {
+class App extends Component {
   state = {
     token: localStorage.getItem('TOKEN')
   };
-  setToken = (tokenVal) => {
-    this.setState({ token: tokenVal});
+  setToken = (tokenValue) => {
+    this.setState({ token: tokenValue});
   };
   render(){
     return (
-      
     <BrowserRouter>
       <header className="links">
           <NavLink exact to="/">
@@ -39,23 +36,23 @@ class App extends Component() {
       </header>
       <section className='main-page'>
         <Switch>
-          <Route exact path='/' Component={Home} />
+          <Route exact path='/' component={Home} />
           <Route 
-              path='/signin'
+              path='/sign-in'
               render={(routerProps) => (
                   <Auth
                       setToken={this.setToken}
-                      type='signin'
+                      type='sign-in'
                       {...routerProps}
                   />
             )}
           />
           <Route
-              path="/signup"
+              path="/sign-up"
               render={(routerProps) => (
                   <Auth
                       setToken={this.setToken}
-                      type="signup"
+                      type="sign-up"
                       {...routerProps}
                   />
             )}
@@ -66,7 +63,7 @@ class App extends Component() {
                   this.state.token ? (
                       <ToDos {...routerProps} />
                   ) : (
-                      <Redirect to='/signin' />
+                      <Redirect to='/sign-in' />
                   )
               }
           />
