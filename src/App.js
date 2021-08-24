@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { BrowserRouter, Switch, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, NavLink, Route } from 'react-router-dom';
 import './App.css';
 import Auth from './Auth.js';
 
@@ -36,8 +36,9 @@ class App extends Component() {
               APP TOKEN: {this.state.token && this.state.token.toString()}
             </div>
       </header>
-      <section>
+      <section className='main-page'>
         <Switch>
+          <Route exact path='/' Component={Home} />
           <Auth/>
         </Switch>
       </section>
