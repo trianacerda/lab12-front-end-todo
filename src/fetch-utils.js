@@ -9,6 +9,7 @@ export async function getToken(loginInput, type) {
         },
         body: JSON.stringify(loginInput),
     });
+    console.log()
     const dataFromLS = await response.json();
     localStorage.setItem('TOKEN', dataFromLS.token);
     return dataFromLS.token;
