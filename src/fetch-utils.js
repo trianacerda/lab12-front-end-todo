@@ -9,7 +9,21 @@ export async function getToken(loginInput, type) {
         },
         body: JSON.stringify(loginInput),
     });
-    console.log()
+    const dataFromLS = await response.json();
+    localStorage.setItem('TOKEN', dataFromLS.token);
+    return dataFromLS.token;
+}
+
+export async function getToDos(loginInput){
+    const apiURL = `${URL}/api/todos`
+    const response = await fetch(apiURL,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjI5OTI2MTk0fQ.N-g9euso3PDEHRiagRqPhOVWM6H8Ur6pgE6t738Pi20'
+        },
+        body: JSON.stringify(loginInput),
+    });
     const dataFromLS = await response.json();
     localStorage.setItem('TOKEN', dataFromLS.token);
     return dataFromLS.token;

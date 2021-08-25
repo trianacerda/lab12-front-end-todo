@@ -4,7 +4,7 @@ import { getToken } from './fetch-utils.js';
 class Auth extends Component {
     state = { email: '', password:'' };
     getType = () => {
-        return this.props.type === 'sign-in' ? 'Sign In' : 'Sign Up';
+        return this.props.type === 'signin' ? 'Sign In' : 'Sign Up';
     };
     
     handleClick = async (e) => {

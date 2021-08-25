@@ -38,7 +38,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route 
-              path='/sign-in'
+              path='/signin'
               render={(routerProps) => (
                   <Auth
                       setToken={this.setToken}
@@ -48,11 +48,11 @@ class App extends Component {
             )}
           />
           <Route
-              path="/sign-up"
+              path="/signup"
               render={(routerProps) => (
                   <Auth
                       setToken={this.setToken}
-                      type="sign-up"
+                      type="signup"
                       {...routerProps}
                   />
             )}
@@ -63,7 +63,7 @@ class App extends Component {
                   this.state.token ? (
                       <ToDos {...routerProps} />
                   ) : (
-                      <Redirect to='/sign-in' />
+                      <Redirect to='/signin' />
                   )
               }
           />
