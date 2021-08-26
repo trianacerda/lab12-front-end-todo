@@ -24,7 +24,7 @@ class ToDos extends Component {
     handleChecked = async (todo) => {
        todo.completed = !todo.completed;
        await updateToDos(this.props.token, todo);
-       this.fetchTodos(); 
+       this.fetchToDos(); 
     }
     render() { 
         return ( 

@@ -38,21 +38,21 @@ export async function createToDos(token, todo){
             'Content-Type': 'application/json',
             Authorization: token,
         },
-        body: JSON.stringify(),
+        body: JSON.stringify(todo),
     });
     const data = await response.json(todo);
     console.log(data)
     return data;
 }
 export async function updateToDos(token, todo){
-    const apiURL = `${URL}/api/todos`
+    const apiURL = `${URL}/api/todos/${todo.id}`
     const response = await fetch(apiURL,{
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             Authorization: token,
         },
-        body: JSON.stringify(),
+        body: JSON.stringify(todo),
     });
     const data = await response.json(todo);
     console.log(data)
