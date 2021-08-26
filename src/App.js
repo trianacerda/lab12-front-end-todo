@@ -24,10 +24,10 @@ class App extends Component {
           <NavLink exact to="/">
             Home
           </NavLink>
-          <NavLink to="/sign-up">
+          <NavLink to="/signup">
             Sign Up
           </NavLink>
-          <NavLink to='/sign-in'>
+          <NavLink to='/signin'>
             Sign In
           </NavLink>
             {/* <div id='token'> 
@@ -38,21 +38,21 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route 
-              path='/sign-in'
+              path='/signin'
               render={(routerProps) => (
                   <Auth
                       setToken={this.setToken}
-                      type='sign-in'
+                      type='signin'
                       {...routerProps}
                   />
             )}
           />
           <Route
-              path="/sign-up"
+              path="/signup"
               render={(routerProps) => (
                   <Auth
                       setToken={this.setToken}
-                      type="sign-up"
+                      type="signup"
                       {...routerProps}
                   />
             )}
@@ -61,9 +61,9 @@ class App extends Component {
               path='/todos'
               render={(routerProps) =>
                   this.state.token ? (
-                      <ToDos {...routerProps} />
+                      <ToDos token={this.state.token} {...routerProps} />
                   ) : (
-                      <Redirect to='/sign-in' />
+                      <Redirect to='/signin' />
                   )
               }
           />
